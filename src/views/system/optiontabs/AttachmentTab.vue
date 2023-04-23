@@ -273,7 +273,7 @@
           <a-input v-model="options.aws_s3_bucket_name" placeholder="存储空间名称" />
         </a-form-model-item>
         <a-form-model-item label="AWS 区域：">
-          <a-input v-model="options.aws_s3_region" placeholder="默认us-east-1" />
+          <a-input v-model="options.aws_s3_region" placeholder="默认us-west-2" />
         </a-form-model-item>
         <a-form-model-item label="Access Key：">
           <a-input-password v-model="options.aws_s3_access_key" autocomplete="new-password" />
@@ -613,6 +613,43 @@ export default {
             return
           }
           if (!this.options.minio_access_secret) {
+            this.$notification['error']({
+              message: '提示',
+              description: 'Access Secret 不能为空！'
+            })
+            return
+          }
+          break
+        case 'AWSS3':
+          if (!this.options.aws_s3_domain_protocol) {
+            this.$notification['error']({
+              message: '提示',
+              description: '绑定域名协议 不能为空！'
+            })
+            return
+          }
+          if (!this.options.aws_s3_domain) {
+            this.$notification['error']({
+              message: '提示',
+              description: '绑定域名 不能为空！'
+            })
+            return
+          }
+          if (!this.aws_s3_bucket_name) {
+            this.$notification['error']({
+              message: '提示',
+              description: 'Bucket 不能为空！'
+            })
+            return
+          }
+          if (!this.options.aws_s3_access_key) {
+            this.$notification['error']({
+              message: '提示',
+              description: 'Access Key 不能为空！'
+            })
+            return
+          }
+          if (!this.options.aws_s3_access_secret) {
             this.$notification['error']({
               message: '提示',
               description: 'Access Secret 不能为空！'
