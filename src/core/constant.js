@@ -141,6 +141,10 @@ export const attachmentTypes = {
   MINIO: {
     type: 'MINIO',
     text: 'MinIO'
+  },
+  AWSS3: {
+    type: 'AWSS3',
+    text: 'AWS S3'
   }
 }
 

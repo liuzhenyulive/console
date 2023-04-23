@@ -259,6 +259,32 @@
           <a-input v-model="options.minio_source" placeholder="不填写则上传到根目录" />
         </a-form-model-item>
       </div>
+      <div v-show="options.attachment_type === 'AWSS3'" id="awsS3Form">
+        <a-form-model-item label="绑定域名协议：">
+          <a-select v-model="options.aws_s3_domain_protocol">
+            <a-select-option value="https://">HTTPS</a-select-option>
+            <a-select-option value="http://">HTTP</a-select-option>
+          </a-select>
+        </a-form-model-item>
+        <a-form-model-item label="绑定域名：">
+          <a-input v-model="options.aws_s3_domain" placeholder="如不填写，路径根域名将为 Bucket + EndPoint" />
+        </a-form-model-item>
+        <a-form-model-item label="Bucket：">
+          <a-input v-model="options.aws_s3_bucket_name" placeholder="存储空间名称" />
+        </a-form-model-item>
+        <a-form-model-item label="AWS 区域：">
+          <a-input v-model="options.aws_s3_region" placeholder="默认us-east-1" />
+        </a-form-model-item>
+        <a-form-model-item label="Access Key：">
+          <a-input-password v-model="options.aws_s3_access_key" autocomplete="new-password" />
+        </a-form-model-item>
+        <a-form-model-item label="Access Secret：">
+          <a-input-password v-model="options.aws_s3_access_secret" autocomplete="new-password" />
+        </a-form-model-item>
+        <a-form-model-item label="文件目录：">
+          <a-input v-model="options.aws_s3_prefix" placeholder="不填写则上传到根目录" />
+        </a-form-model-item>
+      </div>
       <a-form-model-item>
         <ReactiveButton
           :errored="errored"
