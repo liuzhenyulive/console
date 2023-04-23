@@ -635,7 +635,7 @@ export default {
             })
             return
           }
-          if (!this.aws_s3_bucket_name) {
+          if (!this.options.aws_s3_bucket_name) {
             this.$notification['error']({
               message: '提示',
               description: 'Bucket 不能为空！'
